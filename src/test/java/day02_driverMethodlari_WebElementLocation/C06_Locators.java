@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.List;
 
 public class C06_Locators {
     public static void main(String[] args) throws InterruptedException {
@@ -44,9 +45,18 @@ public class C06_Locators {
 
          }else System.out.println("Arama sonuc sayisi testi FailedD");
          // sayfayi kapatin
-         Thread.sleep(3000);
-         driver.quit();
 
 
+         //2. yontem bulunan uruneleri bir liste olarak kaydedip
+        //listenin sizeinin 3ten buyuk oldugunu test edebiliriz
+
+        List<WebElement> bulunanUrunELementleriList =driver.findElements(By.className("prod-img"));
+       if (bulunanUrunELementleriList.size()>expectedMinSOnucSayisi){
+           System.out.println("Arama sonuc sayisi testi Passed");
+
+       }else System.out.println("Arama sonuc sayisi testi Failed");
+
+        Thread.sleep(3000);
+        driver.quit();
     }
 }
